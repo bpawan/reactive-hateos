@@ -2,20 +2,17 @@ package com.bpawan.halexample.service;
 
 import com.bpawan.halexample.model.Employee;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@RequiredArgsConstructor(onConstructor = @_(@Autowired))
 public class EmployeeService {
 
-    private DepartmentService departmentService;
-
-    @Autowired
-    public EmployeeService(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
+    private final DepartmentService departmentService;
 
     public Flux<Employee> getEmployees() {
 

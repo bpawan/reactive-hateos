@@ -3,6 +3,7 @@ package com.bpawan.halexample.resource;
 import com.bpawan.halexample.controller.DepartmentController;
 import com.bpawan.halexample.controller.EmployeeController;
 import com.bpawan.halexample.model.Department;
+import lombok.NonNull;
 import lombok.val;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class DepartmentResourceAssembler extends ResourceAssemblerSupport<Depart
     }
 
     @Override
-    public DepartmentResource toResource(Department department) {
+    public DepartmentResource toResource(@NonNull Department department) {
 
         val resource = new DepartmentResource();
 

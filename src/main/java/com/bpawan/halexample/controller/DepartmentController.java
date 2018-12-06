@@ -6,7 +6,6 @@ import com.bpawan.halexample.service.DepartmentService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@ExposesResourceFor(DepartmentResource.class)
 @RequestMapping("departments")
 @RequiredArgsConstructor(onConstructor = @_(@Autowired))
 public class DepartmentController {
