@@ -1,12 +1,22 @@
 package com.bpawan.halexample.resource;
 
-import com.bpawan.halexample.model.Employee;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 @Getter
 @Setter
+@Builder
 public class EmployeeResource extends ResourceSupport {
-    private Employee employee;
+
+    private String identifier;
+
+    private String name;
+
+    private String address;
+
+    private Integer age;
+
+    private DepartmentResource department;
 }

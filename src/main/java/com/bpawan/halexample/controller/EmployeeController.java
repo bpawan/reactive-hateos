@@ -3,9 +3,6 @@ package com.bpawan.halexample.controller;
 import com.bpawan.halexample.resource.EmployeeResource;
 import com.bpawan.halexample.resource.EmployeeResourceAssembler;
 import com.bpawan.halexample.service.EmployeeService;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +12,19 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("employees")
-@RequiredArgsConstructor(onConstructor = @_(@Autowired))
 public class EmployeeController {
 
-    @NonNull
     private final EmployeeService employeeService;
 
-    @NonNull
     private final EmployeeResourceAssembler employeeResourceAssembler;
+
+    public EmployeeController(
+            EmployeeService employeeService,
+            EmployeeResourceAssembler employeeResourceAssembler
+    ) {
+        this.employeeService = employeeService;
+        this.employeeResourceAssembler = employeeResourceAssembler;
+    }
 
     @GetMapping("/")
     public Flux<EmployeeResource> getAll() {

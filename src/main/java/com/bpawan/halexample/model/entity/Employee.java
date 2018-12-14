@@ -1,19 +1,22 @@
-package com.bpawan.halexample.model;
+package com.bpawan.halexample.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.hateoas.Identifiable;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Department implements Identifiable<Integer> {
+public class Employee implements Identifiable<Integer> {
     private Integer identifier;
 
     private String name;
 
-    private String head;
+    private String address;
+
+    private Integer age;
+
+    private Department department;
 
     @Override
     public Integer getId() {

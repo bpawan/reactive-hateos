@@ -1,6 +1,6 @@
 package com.bpawan.halexample.service;
 
-import com.bpawan.halexample.model.Department;
+import com.bpawan.halexample.model.entity.Department;
 import lombok.NonNull;
 import lombok.val;
 import org.springframework.stereotype.Service;
@@ -28,8 +28,7 @@ public class DepartmentService {
         this.departmentList.add(department4);
     }
 
-    public Flux<Department> getAllDepartments()
-    {
+    public Flux<Department> getAllDepartments() {
         return Flux.fromIterable(this.departmentList);
     }
 

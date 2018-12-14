@@ -1,8 +1,7 @@
 package com.bpawan.halexample.resource;
 
 import com.bpawan.halexample.controller.DepartmentController;
-import com.bpawan.halexample.controller.EmployeeController;
-import com.bpawan.halexample.model.Department;
+import com.bpawan.halexample.model.entity.Department;
 import lombok.NonNull;
 import lombok.val;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
@@ -21,10 +20,14 @@ public class DepartmentResourceAssembler extends ResourceAssemblerSupport<Depart
     @Override
     public DepartmentResource toResource(@NonNull Department department) {
 
-        val resource = new DepartmentResource();
+        val resource = DepartmentResource
+                .builder()
+                .identifier(department.getId())
+                .name(department.getName())
+                .head(department.getHead())
+                .build();
 
-        resource.setDepartment(department);
-        resource.add(linkTo(methodOn(EmployeeController.class).getById(department.getIdentifier())).withSelfRel());
+        resource.add(linkTo(methodOn(DepartmentController.class).getDepartmentById(department.getIdentifier())).withSelfRel());
 
         return resource;
     }
